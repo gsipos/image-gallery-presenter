@@ -43,6 +43,7 @@ export const ConfigPage = () => {
           <Link to="/present" target="_blank">
             <h2>Presentation view</h2>
           </Link>
+          <p>Drag and drop images to the page.</p>
         </div>
 
         {images.map((image) => (
