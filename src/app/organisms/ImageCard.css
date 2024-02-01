@@ -1,0 +1,28 @@
+.image-card {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  background-color: #eee;
+
+  .settings-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+}
+
+img.image-preview {
+  flex: 1 1 50%;
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.span-2 {
+  grid-column: span 2;
+}

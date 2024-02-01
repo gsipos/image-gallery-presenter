@@ -1,0 +1,47 @@
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 18rem);
+  grid-gap: 1rem;
+  grid-auto-rows: 18rem;
+  padding: 1rem;
+}
+
+.bento-grid > * {
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.bento-grid > img {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bento-grid {
+  .s1x2 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .s2x1 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .s2x2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .s2x3 {
+    grid-column: span 2;
+    grid-row: span 3;
+  }
+
+  .s3x3 {
+    grid-column: span 3;
+    grid-row: span 3;
+  }
+}

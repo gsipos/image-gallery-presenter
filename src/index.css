@@ -1,0 +1,29 @@
+:root {
+  --primary-500: hsl(200, 95%, 30%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+
+  --grey-10: hsl(200, 10%, 10%);
+  --grey-20: hsl(200, 10%, 20%);
+  --grey-30: hsl(200, 10%, 30%);
+  --grey-40: hsl(200, 10%, 40%);
+  --grey-50: hsl(200, 10%, 50%);
+  --grey-60: hsl(200, 10%, 60%);
+  --grey-70: hsl(200, 10%, 70%);
+  --grey-80: hsl(200, 10%, 80%);
+  --grey-90: hsl(200, 10%, 90%);
+  --grey-100: hsl(200, 10%, 100%);
+
+  --text-main: hsl(from var(--primary-500) h s 5%);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-500) var(--white);
+}
+
+body {
+  background-color: var(--white);
+  color: var(--text-main);
+  margin: 0;
+}

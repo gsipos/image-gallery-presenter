@@ -1,0 +1,7 @@
+.presenter-root {
+  background-color: var(--black);
+  color: var(--white);
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+}
