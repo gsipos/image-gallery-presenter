@@ -24,6 +24,7 @@ export const Screenshare = (props: { media: PresentableMedia }) => {
   useEffect(() => {
     if (!ref.current) return
     if (!props.media.enabled) {
+      stopCurrentStream()
       ref.current.srcObject = null
     } else {
       navigator.mediaDevices.getDisplayMedia(displayMediaOptions).then((stream) => {
