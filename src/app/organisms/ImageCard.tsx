@@ -1,5 +1,6 @@
+import { BentoSizeIcon } from '../atoms/BentoSizeIcon'
 import { Switch } from '../atoms/Switch'
-import { PresentableImage, PresentableImageChange, bentoSizes } from '../atoms/types'
+import { BentoSizeTemplate, PresentableImage, PresentableImageChange, bentoSizes } from '../atoms/types'
 import './ImageCard.css'
 
 interface Props {
@@ -9,6 +10,11 @@ interface Props {
 }
 
 export const ImageCard = (props: Props) => {
+  const getDimensions = (size: BentoSizeTemplate) => {
+    const [width, height] = size.replace('s', '').split('x').map(Number)
+    return { width, height }
+  }
+
   return (
     <div className="image-card">
       <img
@@ -18,6 +24,7 @@ export const ImageCard = (props: Props) => {
       />
 
       <div className="settings-container">
+        <div className="image-name">{props.image.name}</div>
         <Switch
           label="Enabled"
           checked={props.image.enabled}
@@ -29,10 +36,10 @@ export const ImageCard = (props: Props) => {
         </button>
         {bentoSizes.map((size) => (
           <button
-            className={`${props.image.size === size ? 'contained' : ''}`}
+            className={`${props.image.size === size ? 'contained' : ''} center-icon`}
             onClick={() => props.onChange(props.image, { size })}
           >
-            {size}
+            <BentoSizeIcon {...getDimensions(size)} />
           </button>
         ))}
       </div>

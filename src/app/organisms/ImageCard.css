@@ -5,24 +5,43 @@
   height: 100%;
   overflow: hidden;
   padding: 0;
-  background-color: #eee;
+  position: relative;
 
   .settings-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    background-color: hsla(0, 0%, 93%, 0.7);
+    backdrop-filter: blur(10px);
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.25rem;
     padding: 0.5rem;
+  }
+
+  .image-name {
+    grid-column: span 4;
+    font-size: 12px;
   }
 }
 
 img.image-preview {
-  flex: 1 1 50%;
+  flex: 1 1 30%;
   width: 100%;
-  height: 50%;
+  height: 30%;
   object-fit: cover;
   cursor: pointer;
 }
 
 .span-2 {
-  grid-column: span 2;
+  grid-column: span 3;
+}
+
+.center-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

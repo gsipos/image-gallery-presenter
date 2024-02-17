@@ -1,0 +1,16 @@
+.bento-size-icon-container {
+  display: grid;
+  gap: 2px;
+  height: 1em;
+  box-sizing: border-box;
+  margin: 2px;
+}
+
+.bento-size-icon-block {
+  aspect-ratio: 1;
+  width: 4px;
+  height: 4px;
+  border: 1px solid currentColor;
+  background-color: transparent;
+  box-sizing: border-box;
+}
