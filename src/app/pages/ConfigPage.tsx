@@ -2,16 +2,18 @@ import { Link } from 'react-router-dom'
 import { BentoGrid } from '../atoms/BentoGrid'
 import { DragEventHandler, useState } from 'react'
 import { useSavedImages } from '../hooks/use-saved-images'
-import { PresentableImage } from '../atoms/types'
+import { PresentableMedia } from '../atoms/types'
 import { ImageCard } from '../organisms/ImageCard'
 import './ConfigPage.css'
+import { ScreenshareCard } from '../organisms/ScreenshareCard'
 
 const toBase64 = async (file: File) => {
   const reader = new FileReader()
   reader.readAsDataURL(file)
   await new Promise((resolve) => (reader.onload = resolve))
 
-  const presentableImage: PresentableImage = {
+  const presentableImage: PresentableMedia = {
+    type: 'image',
     name: file.name,
     enabled: false,
     src: reader.result as string,
@@ -46,9 +48,13 @@ export const ConfigPage = () => {
           <p>Drag and drop images to the page.</p>
         </div>
 
-        {images.map((image) => (
-          <ImageCard image={image} onChange={updateImage} onDelete={deleteImage} />
-        ))}
+        {images.map((image) =>
+          image.type === 'screenshare' ? (
+            <ScreenshareCard media={image} onChange={updateImage} />
+          ) : (
+            <ImageCard image={image} onChange={updateImage} onDelete={deleteImage} />
+          ),
+        )}
       </BentoGrid>
     </div>
   )

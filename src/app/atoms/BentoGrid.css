@@ -11,7 +11,8 @@
   padding: 1rem;
 }
 
-.bento-grid > img {
+.bento-grid > img,
+.bento-grid > video {
   padding: 0;
   width: 100%;
   height: 100%;
@@ -47,6 +48,15 @@
 
   .s4x3 {
     grid-column: span 4;
+    grid-row: span 3;
+  }
+
+  .s5x3 {
+    grid-column: span 5;
+    grid-row: span 3;
+  }
+  .s6x3 {
+    grid-column: span 6;
     grid-row: span 3;
   }
 }

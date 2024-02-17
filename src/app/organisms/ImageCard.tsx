@@ -1,12 +1,12 @@
 import { BentoSizeIcon } from '../atoms/BentoSizeIcon'
 import { Switch } from '../atoms/Switch'
-import { BentoSizeTemplate, PresentableImage, PresentableImageChange, bentoSizes } from '../atoms/types'
+import { BentoSizeTemplate, PresentableMedia, PresentableMediaChange, bentoSizes } from '../atoms/types'
 import './ImageCard.css'
 
 interface Props {
-  image: PresentableImage
-  onChange: (image: PresentableImage, change: PresentableImageChange) => void
-  onDelete?: (image: PresentableImage) => void
+  image: PresentableMedia
+  onChange: (image: PresentableMedia, change: PresentableMediaChange) => void
+  onDelete?: (image: PresentableMedia) => void
 }
 
 export const ImageCard = (props: Props) => {

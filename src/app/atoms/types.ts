@@ -7,10 +7,12 @@ export const bentoSizes = [
   's2x3',
   's3x3',
   's4x3',
+  's5x3',
 ] as const satisfies BentoSizeTemplate[]
 export type BentoSize = (typeof bentoSizes)[number]
 
-export interface PresentableImage {
+export interface PresentableMedia {
+  type: 'image' | 'screenshare'
   src: string
   name: string
 
@@ -18,4 +20,4 @@ export interface PresentableImage {
   size: BentoSize
 }
 
-export type PresentableImageChange = Partial<Pick<PresentableImage, 'size' | 'enabled'>>
+export type PresentableMediaChange = Partial<Pick<PresentableMedia, 'size' | 'enabled'>>
