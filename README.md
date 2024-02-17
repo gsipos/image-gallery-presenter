@@ -4,7 +4,8 @@
 
 ## Description
 
-Image Gallery Presenter is a web application that allows users to showcase and present their image galleries in a visually appealing way.
+Image Gallery Presenter is a web application that allows users to showcase and present their images.
+The initial usecase is presenting a bunch of images during tabletop RPG sessions.
 
 ## How to use
 
