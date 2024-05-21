@@ -1,4 +1,14 @@
-import { ButtonGroup, Card, CardContent, CardCover, CardOverflow, IconButton, Switch, Typography } from '@mui/joy'
+import {
+  ButtonGroup,
+  Card,
+  CardContent,
+  CardCover,
+  CardOverflow,
+  IconButton,
+  Stack,
+  Switch,
+  Typography,
+} from '@mui/joy'
 import { EyeIcon, EyeOffIcon, TrashIcon } from 'lucide-react'
 import { BentoSizeIcon } from '../atoms/BentoSizeIcon'
 import { BentoSizeTemplate, PresentableMedia, PresentableMediaChange, bentoSizes } from '../atoms/types'
@@ -25,34 +35,36 @@ export const ImageCard = (props: Props) => {
         onClick={() => props.onChange(props.image, { enabled: !props.image.enabled })}
       />
       <CardOverflow variant="soft">
-        <CardContent>
-          <Typography
-            color="neutral"
-            level="body-xs"
-            startDecorator={
-              <Switch
-                size="md"
-                checked={props.image.enabled}
-                slotProps={{
-                  thumb: { children: props.image.enabled ? <EyeIcon /> : <EyeOffIcon /> },
-                }}
-                onChange={(e) => props.onChange(props.image, { enabled: e.target.checked })}
-              />
-            }
-            endDecorator={
-              <IconButton
-                size="sm"
-                variant="outlined"
-                color="neutral"
-                disabled={props.image.enabled}
-                onClick={() => props.onDelete?.(props.image)}
-              >
-                <TrashIcon />
-              </IconButton>
-            }
-          >
-            {props.image.name}
-          </Typography>
+        <CardContent sx={{}}>
+          <Stack direction="row" gap={1}>
+            <Typography
+              color="neutral"
+              level="body-xs"
+              noWrap
+              sx={{ textWrap: 'balance', wordWrap: 'break-word', height: 'max-content' }}
+              startDecorator={
+                <Switch
+                  size="md"
+                  checked={props.image.enabled}
+                  slotProps={{
+                    thumb: { children: props.image.enabled ? <EyeIcon /> : <EyeOffIcon /> },
+                  }}
+                  onChange={(e) => props.onChange(props.image, { enabled: e.target.checked })}
+                />
+              }
+            >
+              {props.image.name}
+            </Typography>
+            <IconButton
+              size="sm"
+              variant="outlined"
+              color="neutral"
+              disabled={props.image.enabled}
+              onClick={() => props.onDelete?.(props.image)}
+            >
+              <TrashIcon />
+            </IconButton>
+          </Stack>
 
           <ButtonGroup>
             {bentoSizes.map((size) => (

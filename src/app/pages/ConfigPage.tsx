@@ -39,7 +39,7 @@ export const ConfigPage = () => {
   }
 
   return (
-    <Box sx={{ width: '100%', minHeight: '100vh' }} className="config-root" onDrop={handleImageDrop} onDragOver={allowDrop}>
+    <Box sx={{ width: '100%', minHeight: '100vh' }} onDrop={handleImageDrop} onDragOver={allowDrop}>
       <BentoGrid>
         <Card className="s2x1" sx={{ '--Card-radius': '2rem' }} variant="soft">
           <CardContent sx={{ gap: 3 }}>
