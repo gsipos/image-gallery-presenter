@@ -1,6 +1,7 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ConfigPage } from './pages/ConfigPage'
 import { PresenterPage } from './pages/PresenterPage'
+import { CssBaseline, CssVarsProvider } from '@mui/joy'
 
 const AppRouter = () => {
   return (
@@ -16,7 +17,10 @@ const AppRouter = () => {
 export const App = () => {
   return (
     <BrowserRouter>
-      <AppRouter />
+      <CssVarsProvider>
+        <CssBaseline />
+        <AppRouter />
+      </CssVarsProvider>
     </BrowserRouter>
   )
 }

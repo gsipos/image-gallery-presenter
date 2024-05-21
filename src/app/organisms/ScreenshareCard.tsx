@@ -1,7 +1,6 @@
+import { ButtonGroup, Card, CardActions, CardContent, Divider, IconButton, Switch, Typography } from '@mui/joy'
 import { BentoSizeIcon } from '../atoms/BentoSizeIcon'
-import { Switch } from '../atoms/Switch'
 import { BentoSizeTemplate, PresentableMedia, PresentableMediaChange, bentoSizes } from '../atoms/types'
-import './ScreenshareCard.css'
 
 interface Props {
   media: PresentableMedia
@@ -14,25 +13,31 @@ export const ScreenshareCard = (props: Props) => {
     return { width, height }
   }
   return (
-    <div className="screenshare-card">
-      <div>Screenshare</div>
-      <div>You'll be able to choose what to share on the presenter tab.</div>
-      <Switch
-        label="Enabled"
-        checked={props.media.enabled}
-        onChange={(enabled) => props.onChange(props.media, { enabled })}
-        className="span-2"
-      />
-      <div className="size-container">
-        {bentoSizes.map((size) => (
-          <button
-            className={`${props.media.size === size ? 'contained' : ''} center-icon`}
-            onClick={() => props.onChange(props.media, { size })}
-          >
-            <BentoSizeIcon {...getDimensions(size)} />
-          </button>
-        ))}
-      </div>
-    </div>
+    <Card sx={{ '--Card-radius': '2rem' }} variant="outlined">
+      <Typography level="title-md">Screenshare</Typography>
+      <Divider />
+      <CardContent>
+        <Typography level="body-md">You'll be able to choose what to share on the presenter tab.</Typography>
+        <Switch
+          endDecorator="Enabled"
+          checked={props.media.enabled}
+          onChange={(e) => props.onChange(props.media, { enabled: e.target.checked })}
+        />
+      </CardContent>
+      <CardActions>
+        <ButtonGroup>
+          {bentoSizes.map((size) => (
+            <IconButton
+              size="sm"
+              color="primary"
+              variant={props.media.size === size ? 'solid' : 'outlined'}
+              onClick={() => props.onChange(props.media, { size })}
+            >
+              <BentoSizeIcon {...getDimensions(size)} />
+            </IconButton>
+          ))}
+        </ButtonGroup>
+      </CardActions>
+    </Card>
   )
 }

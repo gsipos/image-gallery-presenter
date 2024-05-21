@@ -4,11 +4,13 @@
   grid-gap: 1rem;
   grid-auto-rows: 18rem;
   padding: 1rem;
+  --Card-radius: 2rem;
 }
 
 .bento-grid > * {
   border-radius: 2rem;
   padding: 1rem;
+
 }
 
 .bento-grid > img,

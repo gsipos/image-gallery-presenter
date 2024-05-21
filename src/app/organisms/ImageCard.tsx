@@ -1,7 +1,7 @@
+import { ButtonGroup, Card, CardContent, CardCover, CardOverflow, IconButton, Switch, Typography } from '@mui/joy'
+import { EyeIcon, EyeOffIcon, TrashIcon } from 'lucide-react'
 import { BentoSizeIcon } from '../atoms/BentoSizeIcon'
-import { Switch } from '../atoms/Switch'
 import { BentoSizeTemplate, PresentableMedia, PresentableMediaChange, bentoSizes } from '../atoms/types'
-import './ImageCard.css'
 
 interface Props {
   image: PresentableMedia
@@ -16,33 +16,58 @@ export const ImageCard = (props: Props) => {
   }
 
   return (
-    <div className="image-card">
-      <img
-        className="image-preview"
-        src={props.image.src}
+    <Card sx={{ '--Card-radius': '2rem' }}>
+      <CardCover>
+        <img src={props.image.src} />
+      </CardCover>
+      <CardContent
+        sx={{ cursor: 'pointer' }}
         onClick={() => props.onChange(props.image, { enabled: !props.image.enabled })}
       />
-
-      <div className="settings-container">
-        <div className="image-name">{props.image.name}</div>
-        <Switch
-          label="Enabled"
-          checked={props.image.enabled}
-          onChange={(enabled) => props.onChange(props.image, { enabled })}
-          className="span-2"
-        />
-        <button disabled={props.image.enabled} onClick={() => props.onDelete?.(props.image)}>
-          remove
-        </button>
-        {bentoSizes.map((size) => (
-          <button
-            className={`${props.image.size === size ? 'contained' : ''} center-icon`}
-            onClick={() => props.onChange(props.image, { size })}
+      <CardOverflow variant="soft">
+        <CardContent>
+          <Typography
+            color="neutral"
+            level="body-xs"
+            startDecorator={
+              <Switch
+                size="md"
+                checked={props.image.enabled}
+                slotProps={{
+                  thumb: { children: props.image.enabled ? <EyeIcon /> : <EyeOffIcon /> },
+                }}
+                onChange={(e) => props.onChange(props.image, { enabled: e.target.checked })}
+              />
+            }
+            endDecorator={
+              <IconButton
+                size="sm"
+                variant="outlined"
+                color="neutral"
+                disabled={props.image.enabled}
+                onClick={() => props.onDelete?.(props.image)}
+              >
+                <TrashIcon />
+              </IconButton>
+            }
           >
-            <BentoSizeIcon {...getDimensions(size)} />
-          </button>
-        ))}
-      </div>
-    </div>
+            {props.image.name}
+          </Typography>
+
+          <ButtonGroup>
+            {bentoSizes.map((size) => (
+              <IconButton
+                size="sm"
+                color="primary"
+                variant={props.image.size === size ? 'solid' : 'outlined'}
+                onClick={() => props.onChange(props.image, { size })}
+              >
+                <BentoSizeIcon {...getDimensions(size)} />
+              </IconButton>
+            ))}
+          </ButtonGroup>
+        </CardContent>
+      </CardOverflow>
+    </Card>
   )
 }

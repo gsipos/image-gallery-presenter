@@ -27,3 +27,11 @@ body {
   color: var(--text-main);
   margin: 0;
 }
+
+.lucide {
+  color: var(--Icon-color);
+  margin: var(--Icon-margin);
+  font-size: var(--Icon-fontSize, 20px);
+  width: 1em;
+  height: 1em;
+}
