@@ -13,8 +13,8 @@ The initial usecase is presenting a bunch of images during tabletop RPG sessions
   - added images are not uploaded, only stored in the browser locally
 - set image sizes and enable some images
 - Open the presenter view
-    - the presenter view automagically updates when changes are made
- 
+  - the presenter view automagically updates when changes are made
+
 ## Features
 
 - images are not uploaded to the cloud, they are only stored in the browser locally

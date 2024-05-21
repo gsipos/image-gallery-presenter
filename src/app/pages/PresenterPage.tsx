@@ -9,12 +9,14 @@ export const PresenterPage = () => {
   const enabledImages = images.filter((image) => image.enabled)
   enabledImages.sort((a, b) => bentoSizes.indexOf(b.size) - bentoSizes.indexOf(a.size))
   return (
-    <Box sx={{
-      backgroundColor: t => t.palette.common.black,
-      margin: 0, 
-      width: '100%',
-      minHeight: '100vh',
-    }}>
+    <Box
+      sx={{
+        backgroundColor: (t) => t.palette.common.black,
+        margin: 0,
+        width: '100%',
+        minHeight: '100vh',
+      }}
+    >
       <BentoGrid>
         {enabledImages.map((image) =>
           image.type === 'screenshare' ? (
