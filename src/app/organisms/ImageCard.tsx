@@ -34,7 +34,10 @@ export const ImageCard = (props: Props) => {
         sx={{ cursor: 'pointer' }}
         onClick={() => props.onChange(props.image, { enabled: !props.image.enabled })}
       />
-      <CardOverflow variant="soft">
+      <CardOverflow
+        variant="soft"
+        sx={{ backgroundColor: 'rgb(from var(--joy-palette-primary-50) r g b / 0.8)', backdropFilter: 'blur(10px)' }}
+      >
         <CardContent sx={{}}>
           <Stack direction="row" gap={1}>
             <Typography
