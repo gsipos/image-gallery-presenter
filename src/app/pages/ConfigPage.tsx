@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/joy'
+import { ProjectorIcon } from 'lucide-react'
+import { DragEventHandler } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
 import { BentoGrid } from '../atoms/BentoGrid'
-import { DragEventHandler, useState } from 'react'
-import { useSavedImages } from '../hooks/use-saved-images'
 import { PresentableMedia } from '../atoms/types'
+import { useSavedImages } from '../hooks/use-saved-images'
 import { ImageCard } from '../organisms/ImageCard'
-import './ConfigPage.css'
 import { ScreenshareCard } from '../organisms/ScreenshareCard'
 
 const toBase64 = async (file: File) => {
@@ -38,15 +39,26 @@ export const ConfigPage = () => {
   }
 
   return (
-    <div className="config-root" onDrop={handleImageDrop} onDragOver={allowDrop}>
+    <Box sx={{ width: '100%', minHeight: '100vh' }} onDrop={handleImageDrop} onDragOver={allowDrop}>
       <BentoGrid>
-        <div className="title-card s2x1">
-          <h2>Image gallery Presenter</h2>
-          <Link to="/present" target="_blank">
-            <h2>Presentation view</h2>
-          </Link>
-          <p>Drag and drop images to the page.</p>
-        </div>
+        <Card className="s2x1" sx={{ '--Card-radius': '2rem' }} variant="soft">
+          <CardContent sx={{ gap: 3 }}>
+            <Typography level="h2">Image gallery Presenter</Typography>
+            <Typography>Drag and drop images to the page.</Typography>
+          </CardContent>
+          <CardActions buttonFlex="0 1 320px">
+            <Button
+              component={RouterLink}
+              to="/present"
+              target="_blank"
+              startDecorator={<ProjectorIcon />}
+              variant="solid"
+              color="primary"
+            >
+              Presentation view
+            </Button>
+          </CardActions>
+        </Card>
 
         {images.map((image) =>
           image.type === 'screenshare' ? (
@@ -56,6 +68,6 @@ export const ConfigPage = () => {
           ),
         )}
       </BentoGrid>
-    </div>
+    </Box>
   )
 }
